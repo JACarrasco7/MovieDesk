@@ -58,7 +58,7 @@ Route::middleware('auth:admin')->prefix('admin')->namespace('admin')->group(func
 
     // Insertar genero
     Route::get('/genders/insert', 'MoviesController@create')->name('form-insert-gender');
-    Route::post('/genders', 'MoviesController@store')->name('insert-gender');
+    Route::post('/genders', 'MoviesController@store')->name('insert-gender'); 
 
     // Editar genero
     Route::get('/genders/{id}/edit', 'MoviesController@edit');

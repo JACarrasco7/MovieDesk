@@ -1,0 +1,40 @@
+.slider-content {
+  margin: 0 auto;
+  width: 95%;
+  padding-top: 10px;
+}
+
+.slider {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
+
+.item {
+  transition: transform 1s;
+}
+
+.slider:focus-within .item,
+.slider:hover .item {
+  transform: translateX(-10%);
+}
+
+.slider .item:focus ~ .item,
+.slider .item:hover ~ .item {
+  transform: translateX(10%);
+}
+
+.slider .item:focus,
+.slider .item:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .slider .item:focus,
+.slider .item:hover {
+  transform: scale(1.75);
+  z-index: 1;
+}
+}

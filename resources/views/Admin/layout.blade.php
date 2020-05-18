@@ -33,8 +33,6 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-    <!-- charts -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <style>
         .link-active {
@@ -65,7 +63,6 @@
                         {{ auth()->guard('admin')->user()->name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left:90px">
-                        <a class="dropdown-item" href="#">Editar Perfil</a>
                         <a class="dropdown-item" href="{{ route('admin-logout') }}">Cerrar sesion</a>
                 </li>
             </ul>
@@ -120,6 +117,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('admin-administrators') }}"
+                                class="nav-link {{ AsignarClaseActive('admin-administrators') }}">
+                                <i class="fas fa-users-cog"></i>
+                                <p>&nbsp;Administradores</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -169,24 +174,32 @@
     <script src="{{ asset('adminLTE/plugins/toastr/toastr.min.js') }}"></script>
     <!-- Select2 -->
     <script src="{{ asset('adminLTE/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- JS -->
     <script src="{{ asset('js/movie.js') }}"></script>
     <script src="{{ asset('js/actor.js') }}"></script>
+    <script src="{{ asset('js/gender.js') }}"></script>
+    <script src="{{ asset('js/client.js') }}"></script>
+    <script src="{{ asset('js/administrators.js') }}"></script>
     <script src="{{ asset('js/tables.js') }}"></script>
-
-
+    <!-- Toastr Alert -->
+    <?php include('toastr-alert/toastr-movies.php') ?>
+    <?php include('toastr-alert/toastr-actors.php') ?>
+    <?php include('toastr-alert/toastr-genders.php') ?>
+    <?php include('toastr-alert/toastr-clients.php') ?>
+    <?php include('toastr-alert/toastr-administrators.php') ?>
+    <!-- Select Mu -->
     <script>
         //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
     $('.select2bs4').select2({
-    theme: 'bootstrap4'
+      theme: 'bootstrap4'
     })
     </script>
 
-    <?php include('toastr-alert/toastr-peliculas.php') ?>
-    <?php include('toastr-alert/toastr-actores.php') ?>
+    <?php $mes = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']; ?>
+
+
 
 </body>
 

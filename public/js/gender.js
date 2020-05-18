@@ -1,15 +1,15 @@
 // ELIMINAR PELICULA
-$(".EliminarActor").click(function () {
-  respuesta = confirm("¿Desea realmente eliminar este actor?");
-  idActor = $(this).attr("idActor");
+$(".EliminarGenero").click(function () {
+  respuesta = confirm("¿Desea realmente eliminar este género?");
+  idGenero = $(this).attr("idGender");
 
   if (respuesta) {
-    $(location).attr("href", "/admin/actors/" + idActor + "/delete");
+    $(location).attr("href", "/admin/genders/" + idGenero + "/delete");
   }
 });
 
-function ActorInsertado() {
-  toastr.success("Añadiendo actor...", "Gestion actores", {
+function GeneroInsertado() {
+  toastr.success("Añadiendo género...", "Gestion géneros", {
     closeButton: true,
     debug: false,
     newestOnTop: false,
@@ -28,12 +28,12 @@ function ActorInsertado() {
   });
 
   setTimeout(function () {
-    $(location).attr("href", "/admin/actors");
+    $(location).attr("href", "/admin/genders");
   }, 2000);
 }
 
-function ActorEditado() {
-  toastr.success("Editando actor...", "Gestion actores", {
+function GeneroEditado() {
+  toastr.success("Editando género...", "Gestion géneros", {
     closeButton: true,
     debug: false,
     newestOnTop: false,
@@ -52,12 +52,12 @@ function ActorEditado() {
   });
 
   setTimeout(function () {
-    $(location).attr("href", "/admin/actors");
+    $(location).attr("href", "/admin/genders");
   }, 2000);
 }
 
-function ActorEliminado() {
-  toastr.success("Eliminando actor...", "Gestion actores", {
+function GeneroEliminado() {
+  toastr.success("Eliminando género...", "Gestion géneros", {
     closeButton: true,
     debug: false,
     newestOnTop: false,
@@ -76,6 +76,6 @@ function ActorEliminado() {
   });
 
   setTimeout(function () {
-    $(location).attr("href", "/admin/actors");
+    $(location).attr("href", "/admin/genders");
   }, 2000);
 }

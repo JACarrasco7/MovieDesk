@@ -30,9 +30,10 @@ Route::middleware('auth:admin')->prefix('admin')->namespace('admin')->group(func
 
     Route::get('/', 'PagesController@index')->name('admin-index');
     Route::get('/movies', 'PagesController@movies')->name('admin-movies');
-    Route::get('/gender', 'PagesController@genders')->name('admin-genders');
+    Route::get('/genders', 'PagesController@genders')->name('admin-genders');
     Route::get('/actors', 'PagesController@actors')->name('admin-actors');
     Route::get('/clients', 'PagesController@clients')->name('admin-clients');
+    Route::get('/administrators', 'PagesController@administrators')->name('admin-administrators');
 
     // PELICULA
 
@@ -45,10 +46,9 @@ Route::middleware('auth:admin')->prefix('admin')->namespace('admin')->group(func
     Route::post('/movies/{id}/edit', 'MoviesController@update');
 
     // Activar pelicula
-    Route::get('/movies/{id}/activate', 'MoviesController@activate');
+    Route::DELETE('/movies/{id}/activate', 'MoviesController@activate')->name('activateMovie');
 
     // Desactivar pelicula
-
     Route::get('/movies/{id}/desactivate', 'MoviesController@desactivate');
 
     // Eliminar pelicula
@@ -57,15 +57,15 @@ Route::middleware('auth:admin')->prefix('admin')->namespace('admin')->group(func
     // GENERO
 
     // Insertar genero
-    Route::get('/genders/insert', 'MoviesController@create')->name('form-insert-gender');
-    Route::post('/genders', 'MoviesController@store')->name('insert-gender'); 
+    Route::get('/genders/insert', 'GendersController@create')->name('form-insert-gender');
+    Route::post('/genders', 'GendersController@store')->name('insert-gender');
 
     // Editar genero
-    Route::get('/genders/{id}/edit', 'MoviesController@edit');
-    Route::post('/genders/{id}/edit', 'MoviesController@update');
+    Route::get('/genders/{id}/edit', 'GendersController@edit');
+    Route::post('/genders/{id}/edit', 'GendersController@update');
 
     // Eliminar genero
-    Route::get('/genders/{id}/delete', 'MoviesController@destroy');
+    Route::get('/genders/{id}/delete', 'GendersController@destroy');
 
     // ACTOR
 
@@ -79,6 +79,33 @@ Route::middleware('auth:admin')->prefix('admin')->namespace('admin')->group(func
     // Eliminar genero
     Route::get('/actors/{id}/delete', 'ActorsController@destroy');
 
+    // CLIENTE
+
+    // Activar clients
+    Route::get('/clients/{id}/activate', 'ClientsController@activate');
+
+    // Desactivar clients
+    Route::get('/clients/{id}/desactivate', 'ClientsController@desactivate');
+
+    // Editar clients
+    Route::get('/clients/{id}/edit', 'ClientsController@edit');
+    Route::post('/clients/{id}/edit', 'ClientsController@update');
+
+    // Eliminar clients
+    Route::get('/clients/{id}/delete', 'ClientsController@destroy');
+
+    // ADMINISTRADORES
+
+    // Insertar genero
+    Route::get('/administrators/insert', 'AdministratorController@create')->name('form-insert-administrator');
+    Route::post('/administrators', 'AdministratorController@store')->name('insert-administrator');
+    // Editar clients
+    Route::get('/administrators/{id}/edit', 'AdministratorController@edit');
+    Route::post('/administrators/{id}/edit', 'AdministratorController@update');
+
+    // Eliminar clients
+    Route::get('/administrators/{id}/delete', 'AdministratorController@destroy');
+
 });
 
 //USER
@@ -87,4 +114,4 @@ Auth::routes();
 
 Route::get('UserSalir', 'Auth\LoginController@userLogout')->name('user-logout');
 
-Route::get('/', 'PagesUserController@index')->name('home');
+Route::get('/', 'PagesController@index')->name('home');

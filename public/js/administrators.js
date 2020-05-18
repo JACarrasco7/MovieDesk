@@ -1,15 +1,18 @@
 // ELIMINAR PELICULA
-$(".EliminarActor").click(function () {
-  respuesta = confirm("¿Desea realmente eliminar este actor?");
-  idActor = $(this).attr("idActor");
+$(".EliminarAdministrators").click(function () {
+  respuesta = confirm("¿Desea realmente eliminar este administrador?");
+  IdAdministrators = $(this).attr("IdAdministrators");
 
   if (respuesta) {
-    $(location).attr("href", "/admin/actors/" + idActor + "/delete");
+    $(location).attr(
+      "href",
+      "/admin/administrators/" + IdAdministrators + "/delete"
+    );
   }
 });
 
-function ActorInsertado() {
-  toastr.success("Añadiendo actor...", "Gestion actores", {
+function AdministradorInsertado() {
+  toastr.success("Añadiendo administrador...", "Gestion administradores", {
     closeButton: true,
     debug: false,
     newestOnTop: false,
@@ -28,12 +31,12 @@ function ActorInsertado() {
   });
 
   setTimeout(function () {
-    $(location).attr("href", "/admin/actors");
+    $(location).attr("href", "/admin/administrators");
   }, 2000);
 }
 
-function ActorEditado() {
-  toastr.success("Editando actor...", "Gestion actores", {
+function AdministradorEditado() {
+  toastr.success("Editando administrador...", "Gestion administradores", {
     closeButton: true,
     debug: false,
     newestOnTop: false,
@@ -52,12 +55,12 @@ function ActorEditado() {
   });
 
   setTimeout(function () {
-    $(location).attr("href", "/admin/actors");
+    $(location).attr("href", "/admin/administrators");
   }, 2000);
 }
 
-function ActorEliminado() {
-  toastr.success("Eliminando actor...", "Gestion actores", {
+function AdministradorEliminado() {
+  toastr.success("Eliminando administrador...", "Gestion administradores", {
     closeButton: true,
     debug: false,
     newestOnTop: false,
@@ -76,6 +79,6 @@ function ActorEliminado() {
   });
 
   setTimeout(function () {
-    $(location).attr("href", "/admin/actors");
+    $(location).attr("href", "/admin/administrators");
   }, 2000);
 }

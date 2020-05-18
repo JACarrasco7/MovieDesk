@@ -17,7 +17,13 @@ class AdministratorsTableSeeder extends Seeder
             'email' => 'jacarrasco@moviedesk.es',
             'password' => bcrypt('123'),
             'phone' => '675-70-14-39',
-            'last_connection' =>  date("Y-m-d H:i:s")
+        ]);
+
+        Administrator::create([
+            'name' => 'Juan Jose Lopez Rodriguez',
+            'email' => 'Juanjo@moviedesk.es',
+            'password' => bcrypt('123'),
+            'phone' => '666-66-66-66'
         ]);
     }
 }

@@ -19,7 +19,7 @@ class CreateAdministratorsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone');
-            $table->dateTime('last_connection');
+            $table->dateTime('last_connection')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,8 +22,6 @@
         </div><!-- /.container-fluid -->
     </section>
 
-    {{-- {{ dd($movie->genders()->pluck('gender_id')->toArray()) }} --}}
-
     <!-- Main content -->
     <section class="content d-flex align-items-center">
         <!-- Default box -->
@@ -133,7 +131,8 @@
                                                 data-placeholder="Selecciona genero/s" name="gender[]"
                                                 style="width: 100%;" required>
                                                 @foreach ($genders as $gender)
-                                                <option value="{{ $gender->id }}" {{ (in_array($gender->id, $movie->GendersMovieEdit) ? "selected":"") }}>
+                                                <option value="{{ $gender->id }}"
+                                                    {{ (in_array($gender->id, $movie->GendersMovieEdit) ? "selected":"") }}>
                                                     {{ $gender->name }}</option>
                                                 @endforeach
                                             </select>
@@ -146,7 +145,8 @@
                                                 data-placeholder="Selecciona actor/es" name="actor[]"
                                                 style="width: 100%;" required>
                                                 @foreach ($actors as $actor)
-                                                <option value="{{ $actor->id }}" {{ (in_array($actor->id, $movie->ActorsMovieEdit) ? "selected":"") }}>
+                                                <option value="{{ $actor->id }}"
+                                                    {{ (in_array($actor->id, $movie->ActorsMovieEdit) ? "selected":"") }}>
                                                     {{ $actor->name }}</option>
                                                 @endforeach
                                             </select>

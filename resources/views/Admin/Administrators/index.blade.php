@@ -9,14 +9,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Géneros &nbsp; <a href="{{ route('form-insert-gender') }}" class="btn btn-success"><i class="far fa-plus"
-                                aria-hidden="true"></i></a>
+                    <h1>Administradores &nbsp; <a href="{{ route('form-insert-administrator') }}"
+                            class="btn btn-success"><i class="far fa-plus" aria-hidden="true"></i></a>
                     </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin-index') }}">Inicio</a></li>
-                        <li class="breadcrumb-item active">Géneros</li>
+                        <li class="breadcrumb-item active">Administradores</li>
                     </ol>
                 </div>
             </div>
@@ -34,29 +34,33 @@
                     <thead>
                         <tr>
                             <th>Acciones</th>
-                            <th>Nº</th>
-                            <th>id</th>
-                            <th class="text-left">Géneros</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Teléfono</th>
+                            <th>Ultima conexion</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($genders as $clave => $gender)
+                        @forelse ($admins as $clave => $admin)
                         <tr>
-                            <td class="align-middle">
-                                <button class="btn btn-danger EliminarGenero" idGender="{{ $gender->id }}"><i
-                                        class="fa fa-trash" aria-hidden="true"></i></button>
+                            <td>
+                                <button class="btn btn-danger EliminarAdministrators"
+                                    IdAdministrators="{{ $admin->id }}"><i class="fa fa-trash"
+                                        aria-hidden="true"></i></button>
 
-                                <a href="{{ url('admin/genders/'.$gender->id.'/edit') }}" class="btn btn-warning">
+                                <a href="{{ url('admin/administrators/'.$admin->id.'/edit') }}" class="btn btn-warning">
                                     <i class="fas fa-edit" style="color: white"></i>
                                 </a>
                             </td>
-                            <td class="align-middle">{{ $clave + 1 }}</td>
-                            <td class="align-middle">{{ $gender->id }}</td>
-                            <td class="align-middle text-left">{{ $gender->name }}</td>
+                            <td class="align-middle text-left">{{ $admin->name }}</td>
+                            <td class="align-middle text-left">{{ $admin->email }}</td>
+                            <td class="align-middle">{{ $admin->phone }}</td>
+                            <td class="align-middle">{{ ($admin->last_connection)? $admin->last_connection : 'Nunca' }}
+                            </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="8">No se han encontrado géneros</td>
+                            <td colspan="8">No se han encontrado Admins</td>
                         </tr>
                         @endforelse
                     </tbody>

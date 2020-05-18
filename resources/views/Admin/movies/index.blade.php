@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         @forelse ($movies as $clave => $movie)
-                        <tr>
+                        <tr data-id="{{ $movie->id }}">
                             <td></td>
                             <td class="align-middle">
                                 <button class="btn btn-danger EliminarPelicula" idPelicula="{{ $movie->id }}"><i
@@ -62,8 +62,14 @@
                             <td class="align-middle">
 
                                 @if ($movie->deleted_at)
-                                <button class="btn btn-danger activarPelicula" idPelicula="{{ $movie->id }}"><i
-                                        class="fa fa-window-close" aria-hidden="true"></i></button>
+
+                                {!! Form::open(['route' => ['activateMovie', $movie->id], 'method' => 'DELETE']) !!}
+
+                                <button class="btn btn-danger activarPelicula">
+                                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                                </button>
+
+                                {!! Form::close() !!}
                                 @else
                                 <button class="btn btn-success DesactivarPelicula" idPelicula="{{ $movie->id }}"><i
                                         class="fa fa-check" aria-hidden="true"></i></button>

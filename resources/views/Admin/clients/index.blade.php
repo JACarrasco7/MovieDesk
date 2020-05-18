@@ -9,8 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Actores &nbsp; <a href="" class="btn btn-success"><i class="far fa-plus"
-                                aria-hidden="true"></i></a>
+                    <h1>Clientes</a>
                     </h1>
                 </div>
                 <div class="col-sm-6">
@@ -51,10 +50,10 @@
                         @forelse ($users as $clave => $user)
                         <tr>
                             <td class="align-middle">
-                                <button class="btn btn-danger EliminarActor" idActor="{{ $user->id }}"><i
+                                <button class="btn btn-danger EliminarCliente" idCliente="{{ $user->id }}"><i
                                         class="fa fa-trash" aria-hidden="true"></i></button>
 
-                                <a href="{{ url('admin/client/'.$user->id.'/edit') }}" class="btn btn-warning">
+                                <a href="{{ url('admin/clients/'.$user->id.'/edit') }}" class="btn btn-warning">
                                     <i class="fas fa-edit" style="color: white"></i>
                                 </a>
                             </td>
@@ -62,8 +61,19 @@
                             <td class="align-middle">{{ $user->id }}</td>
                             <td class="align-middle text-left">{{ $user->client->name }}</td>
                             <td class="align-middle text-left">{{ $user->email }}</td>
-                            <td class="align-middle text-left">{{ ($user->auto_payment)? 'SI' : 'NO' }}</td>
-                            <td class="align-middle text-left">{{ $user->client->phone }}</td>
+                            <td class="align-middle">
+
+                                @if ($user->auto_payment)
+                                <button class="btn btn-danger DesactivarAutoPayment" idCliente="{{ $user->id }}"><i
+                                        class="fa fa-window-close" aria-hidden="true"></i></button>
+                                @else
+                                <button class="btn btn-success activarAutoPayment" idCliente="{{ $user->id }}"><i
+                                        class="fa fa-check" aria-hidden="true"></i></button>
+                                @endif
+
+
+                            </td>
+                            <td class="align-middle">{{ $user->client->phone }}</td>
                         </tr>
                         @empty
                         <tr>

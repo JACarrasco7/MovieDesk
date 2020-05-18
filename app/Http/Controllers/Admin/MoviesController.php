@@ -59,6 +59,7 @@ class MoviesController extends Controller
 
         $id_movie = Movie::latest('id')->first();
 
+
         for ($i = 0; $i < count($request->gender); $i++) {
             $id_movie->genders()->attach($request->gender[$i]);
         }
@@ -142,10 +143,12 @@ class MoviesController extends Controller
         return view('Admin\movies\index')->with(compact('pelicula_editada', 'movies'));
     }
 
-    public function activate($id)
+    public function activate(Request $request, $id)
     {
 
-        Movie::onlyTrashed()->find($id)->restore();
+        if ($request->ajax()) {
+            Movie::onlyTrashed()->find($id)->restore();            
+        }
 
         return back();
 

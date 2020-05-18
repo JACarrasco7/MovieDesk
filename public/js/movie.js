@@ -25,11 +25,17 @@ $(".cover").change(function () {
 // ACTIVAR PELICULA
 $(".activarPelicula").click(function () {
   respuesta = confirm("¿Desea realmente activar esta pelicula?");
-  id_pelicula = $(this).attr("idPelicula");
 
-  if (respuesta) {
-    $(location).attr("href", "/admin/movies/" + id_pelicula + "/activate");
-  }
+  // id_pelicula = $(this).attr("idPelicula");
+
+  var row = $(this).parents("tr");
+  var form = $(this).parents("form");
+  var url = form.attr("action");
+
+  $.post(url, form.serialize(), function (result) {
+  });
+
+  // $(location).attr("href", "/admin/movies/" + id_pelicula + "/activate");
 });
 
 // DESACTIVAR PELICULA
@@ -63,7 +69,7 @@ function PeliculaInsertada() {
     onclick: null,
     showDuration: "300",
     hideDuration: "1000",
-    timeOut: "5000",
+    timeOut: "2000",
     extendedTimeOut: "1000",
     showEasing: "swing",
     hideEasing: "linear",
@@ -73,7 +79,7 @@ function PeliculaInsertada() {
 
   setTimeout(function () {
     $(location).attr("href", "/admin/movies");
-  }, 5000);
+  }, 2000);
 }
 
 function PeliculaEditada() {
@@ -87,7 +93,7 @@ function PeliculaEditada() {
     onclick: null,
     showDuration: "300",
     hideDuration: "1000",
-    timeOut: "5000",
+    timeOut: "2000",
     extendedTimeOut: "1000",
     showEasing: "swing",
     hideEasing: "linear",
@@ -97,7 +103,7 @@ function PeliculaEditada() {
 
   setTimeout(function () {
     $(location).attr("href", "/admin/movies");
-  }, 5000);
+  }, 2000);
 }
 
 function PeliculaEliminada() {
@@ -111,7 +117,7 @@ function PeliculaEliminada() {
     onclick: null,
     showDuration: "300",
     hideDuration: "1000",
-    timeOut: "5000",
+    timeOut: "2000",
     extendedTimeOut: "1000",
     showEasing: "swing",
     hideEasing: "linear",
@@ -121,5 +127,5 @@ function PeliculaEliminada() {
 
   setTimeout(function () {
     $(location).attr("href", "/admin/movies");
-  }, 5000);
+  }, 2000);
 }

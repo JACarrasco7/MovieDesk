@@ -18,35 +18,66 @@
     <!-- Main content -->
     <section class="content">
 
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Inicio</h3>
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                        title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
-                        title="Remove">
-                        <i class="fas fa-times"></i></button>
+        <div class="row">
+            <div class="col-5">
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Ultimas conexiones</h3>
+                    </div>
+                    <div class="card-body">
+
+
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Ultima conexion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($admins as $clave => $admin)
+                                <tr>
+                                    <td class="align-middle text-left">{{ $admin->name }}</td>
+                                    <td class="align-middle text-left">{{ $admin->email }}</td>
+                                    <td class="align-middle text-left">{{ $admin->last_connection }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="8">No se han encontrado Admins</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /.card-body -->
                 </div>
+                <!-- /.card -->
             </div>
-            <div class="card-body">
+            <div class="col-7">
+                <!-- Default box -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Suscripciones mensuales</h3>
+                    </div>
+                    <div class="card-body">
 
-                <h1>Bienvenido a Administracion Moviedesk</h1>
+                        <div id="grafica"></div>
 
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                Footer
-            </div>
-            <!-- /.card-footer-->
         </div>
-        <!-- /.card -->
 
     </section>
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
 @stop
+
